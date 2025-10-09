@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Empresa Emprendimiento</title>
+    <style>
+         :root {
+            --accent: #e23636;
+            --accent-2: #2ea0ff;
+            --bg: #0f1724;
+            --card: #0b1220;
+            --glass: rgba(255, 255, 255, 0.03);
+            --muted: #98a0b3
+        }
+        
+        * {
+            box-sizing: border-box
+        }
+        
+        body {
+            font-family: Inter, ui-sans-serif, system-ui, Segoe UI, Roboto, 'Helvetica Neue', Arial;
+            background: linear-gradient(180deg, #071026 0%, #091226 60%);
+            color: #e6eef8;
+            margin: 0;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 36px auto;
+            padding: 28px
+        }
+        
+        header {
+            display: flex;
+            align-items: center;
+            gap: 18px
+        }
+        
+        .brand-top {
+            display: flex;
+            align-items: center;
+            gap: 14px
+        }
+        
+        .brand-top img {
+            width: 64px;
+            height: 64px;
+            object-fit: contain;
+            border-radius: 10px;
+            background: var(--glass);
+            padding: 8px
+        }
+        
+        .title {
+            font-size: 20px;
+            font-weight: 700
+        }
+        
+        .subtitle {
+            font-size: 13px;
+            color: var(--muted)
+        }
+        
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 420px;
+            gap: 28px;
+            margin-top: 28px;
+            align-items: center
+        }
+        
+        .card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+            padding: 28px;
+            border-radius: 16px;
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(6px)
+        }
+        
+        .big-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 18px;
+            border-radius: 12px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.00));
+            height: 340px
+        }
+        
+        .big-logo img {
+            max-width: 90%;
+            max-height: 100%;
+            object-fit: contain
+        }
+        
+        .upload-row {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            justify-content: center;
+            margin-top: 12px
+        }
+        
+        .vision-mission {
+            display: flex;
+            flex-direction: column;
+            gap: 12px
+        }
+        
+        h2 {
+            margin: 0 0 8px 0
+        }
+        
+        p {
+            margin: 0;
+            color: #cfe6ff
+        }
+        
+        .props {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 18px
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--muted);
+            font-size: 13px
+        }
+        
+        .right {
+            display: flex;
+            flex-direction: column;
+            gap: 14px
+        }
+        
+        .proposals {
+            display: flex;
+            flex-direction: column;
+            gap: 10px
+        }
+        
+        .proposal {
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.02));
+            padding: 12px;
+            border-radius: 10px
+        }
+        
+        .logo-idea {
+            font-size: 14px;
+            color: #dfeeff
+        }
+        
+        .socials {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap
+        }
+        
+        .socials a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: inherit;
+            background: rgba(255, 255, 255, 0.02)
+        }
+        
+        .contact {
+            margin-top: 18px;
+            color: var(--muted)
+        }
+        
+        footer {
+            margin-top: 28px;
+            text-align: center;
+            color: var(--muted);
+            font-size: 13px
+        }
+        
+        @media (max-width:960px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+            .big-logo {
+                height: 240px
+            }
+        }
+        
+        input[type=file] {
+            display: none
+        }
+        
+        .btn {
+            background: var(--accent);
+            color: white;
+            padding: 10px 14px;
+            border-radius: 10px;
+            border: 0;
+            cursor: pointer;
+            font-weight: 600
+        }
+        
+        .btn.secondary {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.06)
+        }
+        
+        .editable {
+            outline: none;
+            border-radius: 6px;
+            padding: 6px
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="brand-top">
+                <img id="topLogo" src="logo.png" alt="logo">
+                <div>
+                    <div class="title" contenteditable="true" id="pageTitle">Ejemplo Página</div>
+                    <div class="subtitle">Llos mejores en contenido De Marvel y tu Area de descanso</div>
+                </div>
+            </div>
+        </header>
+
+        <main class="hero">
+            <section class="card">
+                <div class="big-logo" id="bigLogoBox">
+                    <img id="bigLogo" src="logo.png" alt="Gran logo">
+                </div>
+
+                <div class="vision-mission">
+                    <div>
+                        <h2>Visión</h2>
+                        <p id="visionText">Ser el punto de encuentro líder para fans y familias que buscan experiencias interactivas inspiradas en el universo Marvel y el mundo de Mario — un lugar donde las máquinas expendedoras, la diversión y los coleccionables se combinan
+                            para crear momentos memorables y fomentar una comunidad creativa y nostálgica.</p>
+                    </div>
+
+                    <div>
+                        <h2>Misión</h2>
+                        <p id="missionText">Ofrecer una experiencia única de entretenimiento y compra a través de máquinas interactivas (helados, café, juegos de garra y expendedoras de Lego) con temáticas de Marvel y Mario. Buscamos que cada visitante pueda experimentar,
+                            ganar premios tematizados y descubrir productos exclusivos, incentivando la interacción directa con las máquinas y creando eventos temáticos que potencien la comunidad y el crecimiento del negocio.</p>
+                    </div>
+
+                    <div class="props">
+                        <span class="badge">Inicia con: Máquina de helados · Máquina de café · Ventas de Lego · Máquina de garra</span>
+                        <span class="badge">Orientado a: fans de Marvel y Mario · Familias · Coleccionistas</span>
+                    </div>
+                </div>
+            </section>
+
+            <aside class="right">
+                <div class="card proposals">
+                    <h2>¿Quienes Somos?</h2>
+
+                    <div class="proposal">
+                        <strong>1) PopGarra</strong>
+                        <div class="logo-idea">Slogan: "Gana tus héroes. Vive tus mundos."<br>Idea de logo: Silueta de una garra estilizada que sujeta un bloque clásico de videojuego (pixel) con paleta de colores rojo (Marvel) y rojo/azul/amarillo (Mario).</div>
+                    </div>
+
+                    <div class="proposal">
+                        <strong>2) HeroBros Corner</strong>
+                        <div class="logo-idea">Slogan: "Donde héroes y bros se encuentran"<br>Idea de logo: Combinación tipográfica con una ficha tipo bloque de Mario y una estrella estilo cómic detrás.</div>
+                    </div>
+
+                    <div class="proposal">
+                        <strong>3) Pixel & Mask</strong>
+                        <div class="logo-idea">Slogan: "Vending, juegos y colecciones"<br>Idea de logo: Ícono mixto: medio casco de superhéroe + bloque pixelado.</div>
+                    </div>
+
+                    <div class="proposal">
+                        <strong>4) ArcadeLoot</strong>
+                        <div class="logo-idea">Slogan: "Premios que te llevan al juego"<br>Idea de logo: Máquina arcade minimal con premio asomando (figura tipo Lego).</div>
+                    </div>
+
+                </div>
+
+                <div class="card">
+                    <h2>Comunicación & redes</h2>
+                    <div class="socials">
+                        <a href="#">Facebook</a>
+                        <a href="#">X</a>
+                        <a href="#">Instagram</a>
+                        <a href="#">TikTok</a>
+                    </div>
+                </div>
+            </aside>
+        </main>
+
+        <footer>
+            <div>© <span id="yyyy"></span> MundoGeek • Diseño de landing temático</div>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('yyyy').textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>
