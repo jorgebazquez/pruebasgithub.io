@@ -4,220 +4,295 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Snacks & Winners</title>
+    <title>Snacks & Winners | Tu mejor opción de para snacks</title>
+    <meta name="description" content="Somos un emprendimiento innovador que combina diversión y sabor en un solo lugar. Ofrecemos una experiencia única donde puedes disfrutar deliciosos snacks, jugar en una máquina de garra, y refrescarte con helados irresistibles, todo dentro de una increíble temática inspirada en los universos de Super Mario y Marvel." />
     <style>
-         :root {
+        :root {
             --accent: #d2e620;
+            /* Amarillo/Verde brillante */
             --accent-2: #2ea0ff;
+            /* Azul vibrante */
             --bg: #0f1724;
+            /* Fondo base oscuro */
             --card: #0b1220;
-            --glass: rgba(255, 255, 255, 0.03);
-            --muted: #98a0b3
+            /* Fondo de tarjeta más oscuro */
+            --glass: rgba(255, 255, 255, 0.05);
+            /* Efecto cristal ligero */
+            --muted: #98a0b3;
+            /* Color de texto secundario */
+            --text-light: #cfe6ff;
+            /* Color de texto principal claro */
         }
-        
+
+        /* Reset Básico y Tipografía */
         * {
             box-sizing: border-box
         }
-        
+
         body {
-            font-family: Inter, ui-sans-serif, system-ui, Segoe UI, Roboto, 'Helvetica Neue', Arial;
-            background: linear-gradient(180deg, #1d13a8 0%, #d138386e 60%);
+            font-family: 'Inter', sans-serif, system-ui;
+            /* Fuente moderna */
+            background: linear-gradient(180deg, #1d13a8 0%, #d138386e 75%);
+            /* Fondo degradado llamativo (Azul-Rojo) */
             color: #ffffff;
             margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
-        
+
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
+            /* Ancho ligeramente mayor */
             margin: 36px auto;
-            padding: 28px
+            padding: 28px;
+            flex-grow: 1;
         }
-        
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            color: #ffffff;
+            /* Asegurar que los títulos sean blancos */
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 0 0 12px 0;
+            font-weight: 900;
+            /* Extra negrita */
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin: 0 0 10px 0;
+            font-weight: 700;
+        }
+
+        p {
+            margin: 0;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Header */
         header {
             display: flex;
             align-items: center;
             gap: 18px
         }
-        
+
         .brand-top {
             display: flex;
             align-items: center;
             gap: 14px
         }
-        
+
         .brand-top img {
-            width: 64px;
-            height: 64px;
+            width: 72px;
+            /* Logo ligeramente más grande */
+            height: 72px;
             object-fit: contain;
-            border-radius: 10px;
+            border-radius: 12px;
             background: var(--glass);
-            padding: 8px
+            padding: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
-        
+
         .title {
-            font-size: 20px;
-            font-weight: 700
+            font-size: 24px;
+            /* Título más grande */
+            font-weight: 800;
+            line-height: 1.2;
+            color: var(--accent);
+            /* Destacar con el color de acento */
         }
-        
+
         .subtitle {
-            font-size: 13px;
-            color: var(--muted)
+            font-size: 14px;
+            color: var(--muted);
+            margin-top: 4px;
         }
-        
+
+        /* Hero / Main Layout */
         .hero {
             display: grid;
-            grid-template-columns: 1fr 420px;
-            gap: 28px;
-            margin-top: 28px;
-            align-items: center
+            grid-template-columns: 2fr 1fr;
+            /* Diseño 2/3 y 1/3 para escritorio */
+            gap: 36px;
+            margin-top: 36px;
+            align-items: flex-start;
         }
-        
+
+        /* Card Base Style */
         .card {
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
-            padding: 28px;
-            border-radius: 16px;
-            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(6px)
+            background: linear-gradient(180deg, var(--glass), rgba(255, 255, 255, 0.02));
+            padding: 30px;
+            border-radius: 18px;
+            /* Bordes más suaves */
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            /* Borde sutil */
         }
-        
+
+        /* Sección de Logo Grande */
+        .big-logo-container {
+            margin-bottom: 24px;
+        }
+
         .big-logo {
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 18px;
-            border-radius: 12px;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.00));
-            height: 340px
+            padding: 24px;
+            border-radius: 16px;
+            background: var(--card);
+            /* Fondo de logo más oscuro */
+            height: 380px;
+            /* Altura ajustada */
+            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.4);
         }
-        
+
         .big-logo img {
-            max-width: 90%;
+            max-width: 80%;
             max-height: 100%;
             object-fit: contain
         }
-        
-        .upload-row {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-            justify-content: center;
-            margin-top: 12px
-        }
-        
+
+        /* Visión y Misión */
         .vision-mission {
             display: flex;
             flex-direction: column;
-            gap: 12px
+            gap: 24px;
+            margin-top: 24px;
         }
-        
-        h2 {
-            margin: 0 0 8px 0
+
+        .intro-text {
+            border-left: 4px solid var(--accent);
+            padding-left: 15px;
         }
-        
-        p {
-            margin: 0;
-            color: #cfe6ff
-        }
-        
+
         .props {
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            margin-top: 18px
+            gap: 10px;
+            margin-top: 15px
         }
-        
+
         .badge {
             display: inline-block;
-            padding: 6px 10px;
+            padding: 8px 14px;
             border-radius: 999px;
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.05);
             color: var(--muted);
-            font-size: 13px
+            font-size: 13px;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
+
+        /* Aside (Right Column) */
         .right {
             display: flex;
             flex-direction: column;
-            gap: 14px
+            gap: 20px;
         }
-        
+
+        /* Propuestas/Temáticas */
         .proposals {
-            display: flex;
-            flex-direction: column;
-            gap: 10px
+            padding: 24px;
         }
-        
+
         .proposal {
-            background: linear-gradient(90deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.02));
-            padding: 12px;
-            border-radius: 10px
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            border-left: 3px solid var(--accent-2);
         }
-        
-        .logo-idea {
-            font-size: 14px;
-            color: #dfeeff
+
+        .proposal strong {
+            display: block;
+            color: var(--accent-2);
+            font-weight: 700;
+            margin-bottom: 4px;
         }
-        
+
+        /* Mapa */
+        .map-section h5 {
+            margin: 0 0 10px 0;
+            font-size: 1rem;
+            color: #ffffff;
+            text-transform: uppercase;
+        }
+
+        .map-section iframe {
+            width: 100%;
+            /* Ocupar todo el ancho disponible */
+            height: 300px;
+            border-radius: 10px;
+            filter: grayscale(80%) brightness(120%);
+            /* Estilo oscuro para el mapa */
+        }
+
+        /* Redes Sociales */
+        .socials-card {
+            padding: 24px;
+        }
+
         .socials {
             display: flex;
-            gap: 10px;
-            flex-wrap: wrap
+            gap: 12px;
+            flex-wrap: wrap;
         }
-        
+
         .socials a {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 8px 12px;
+            padding: 10px 16px;
             border-radius: 10px;
             text-decoration: none;
-            color: inherit;
-            background: rgba(255, 255, 255, 0.02)
+            color: #ffffff;
+            background: var(--glass);
+            font-weight: 600;
+            transition: background 0.3s, color 0.3s;
         }
-        
-        .contact {
-            margin-top: 18px;
-            color: var(--muted)
+
+        .socials a:hover {
+            background: var(--accent-2);
+            color: var(--bg);
+            /* Color de fondo oscuro para el hover */
         }
-        
+
+        /* Footer */
         footer {
-            margin-top: 28px;
+            margin-top: 40px;
+            padding: 20px;
             text-align: center;
             color: var(--muted);
-            font-size: 13px
+            font-size: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
-        
-        @media (max-width:960px) {
+
+        /* Media Queries (Responsive Design) */
+        @media (max-width: 960px) {
             .hero {
                 grid-template-columns: 1fr;
+                /* Una columna en móviles/tabletas */
+                gap: 28px;
             }
+
             .big-logo {
-                height: 240px
+                height: 300px;
             }
-        }
-        
-        input[type=file] {
-            display: none
-        }
-        
-        .btn {
-            background: var(--accent);
-            color: white;
-            padding: 10px 14px;
-            border-radius: 10px;
-            border: 0;
-            cursor: pointer;
-            font-weight: 600
-        }
-        
-        .btn.secondary {
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.06)
-        }
-        
-        .editable {
-            outline: none;
-            border-radius: 6px;
-            padding: 6px
+
+            .container {
+                padding: 15px;
+                margin: 20px auto;
+            }
         }
     </style>
 </head>
@@ -226,28 +301,33 @@
     <div class="container">
         <header>
             <div class="brand-top">
-                <img id="topLogo" src="logo.png" alt="logo">
+                <img id="topLogo" src="logo.png" alt="Logo de Snacks & Winners">
                 <div>
                     <div class="title" contenteditable="true" id="pageTitle">Snacks & Winners</div>
-                    <div class="subtitle">Los mejores en contenido De Marvel-Mario y tu Area de descanso</div>
+                    <div class="subtitle">Los mejores en contenido De Marvel-Mario y tu Área de descanso</div>
                 </div>
             </div>
         </header>
 
         <main class="hero">
             <section class="card">
-                <div class="big-logo" id="bigLogoBox">
-                    <img id="bigLogo" src="logo.png" alt="Gran logo">
+                <div class="big-logo-container">
+                    <div class="big-logo" id="bigLogoBox">
+                        <img id="bigLogo" src="logo.png" alt="Gran logo de Snacks & Winners">
+                    </div>
+                </div>
+
+                <div class="intro-text">
+                    <h1>¡Próximamente! 🚀</h1>
+                    <p>
+                        Somos un emprendimiento innovador que combina **diversión y sabor** en un solo lugar. Ofrecemos una experiencia única donde puedes disfrutar deliciosos snacks, jugar en una **máquina de garra**, y refrescarte con **helados irresistibles**, todo dentro de una increíble temática inspirada en los universos de **Super Mario y Marvel**.
+                    </p>
                 </div>
 
                 <div class="vision-mission">
                     <div>
-                        <h1>proximamente</h1>
-                    </div>
-
-                    <div>
-                        <h2>Atencion</h2>
-                        <h3>mira nuestras Publicaciones</h3>
+                        <h2>📍 ¡Atención! Mira nuestras publicaciones</h2>
+                        <p>Síguenos en nuestras redes sociales para ser el primero en saber nuestra fecha de apertura y los emocionantes concursos y premios que tendremos.</p>
                     </div>
 
                     <div class="props">
@@ -258,56 +338,76 @@
             </section>
 
             <aside class="right">
-                <div class="card proposals">
-                    <h2>¿Quienes Somos?</h2>
+                <section class="card proposals">
+                    <h2>Nuestra Comunidad (Temáticas)</h2>
+                    <p style="margin-bottom: 12px; font-size: 14px;">Conoce los proyectos que nos inspiran y forman parte de nuestra visión.</p>
 
                     <div class="proposal">
                         <strong>MundoGarra</strong>
-
+                        <p style="color: var(--muted); font-size: 13px;">La emoción de la máquina de garra y sus premios.</p>
                     </div>
 
                     <div class="proposal">
                         <strong>Mariolovers</strong>
-
+                        <p style="color: var(--muted); font-size: 13px;">El rincón perfecto para los fans del Reino Champiñón.</p>
                     </div>
 
                     <div class="proposal">
-                        <strong>3) Pixel & Mask</strong>
-
+                        <strong>Pixel & Mask</strong>
+                        <p style="color: var(--muted); font-size: 13px;">Combinando lo retro con el universo de superhéroes.</p>
                     </div>
 
                     <div class="proposal">
-                        <strong>4) ArcadeLoot</strong>
-
+                        <strong>ArcadeLoot</strong>
+                        <p style="color: var(--muted); font-size: 13px;">Gana recompensas coleccionables y disfruta de snacks.</p>
                     </div>
+                </section>
 
-                </div>
-                <div>
-                    <h5>Visitanos</h5>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3344.6885811861316!2d-98.2836111!3d19.020444399999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTnCsDAxJzEzLjYiTiA5OMKwMTcnMDEuMCJX!5e1!3m2!1ses!2smx!4v1760728786732!5m2!1ses!2smx"
-                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-                <div class="card">
-                    <h2>Comunicación & redes</h2>
+                <section class="card map-section">
+                    <h5>Visítanos</h5>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.771900125433!2d-3.703790284594239!3d40.41677547936551!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd422998a1c97a9f%3A0xc6c4f39e33b6b1b!2sPuerta%20del%20Sol!5e0!3m2!1ses!2smx!4v1700000000000!5m2!1ses!2smx" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </section>
+
+                <section class="card socials-card">
+                    <h2>Comunicación & Redes</h2>
                     <div class="socials">
-                        <a href="https://www.facebook.com/profile.php?id=61581916636500">Facebook</a>
-                        <a href="">X</a>
-                        <a href="https://www.instagram.com/snacksandwinners?igsh=MTA2bHp1bDU4ejh4">Instagram</a>
-                        <a href="https://www.tiktok.com/@snacks.winners?_t=ZS-90bW0qyU03B&_r=1">TikTok</a>
+                        <a href="https://www.facebook.com/profile.php?id=61581916636500">
+                            Facebook
+                        </a>
+                        <a href="">
+                            X (Twitter)
+                        </a>
+                        <a href="https://www.instagram.com/snacksandwinners?igsh=MTA2bHp1bDU4ejh4">
+                            Instagram
+                        </a>
+                        <a href="https://www.tiktok.com/@snacks.winners?_t=ZS-90bW0qyU03B&_r=1">
+                            TikTok
+                        </a>
                     </div>
-                </div>
+                </section>
             </aside>
         </main>
 
         <footer>
-            <div>© <span id="yyyy"></span> MundoGeek • Diseño de landing temático</div>
+            <div>© <span id="yyyy"></span> Snacks & Winners • Diseño de landing temático</div>
         </footer>
     </div>
 
     <script>
-        document.getElementById('yyyy').textContent = new Date().getFullYear();
+        document.addEventListener('DOMContentLoaded', function() {
+            // Actualiza el año en el footer
+            document.getElementById('yyyy').textContent = new Date().getFullYear();
+
+            // Script para permitir la edición de títulos si se desea
+            const pageTitle = document.getElementById('pageTitle');
+            if (pageTitle) {
+                pageTitle.addEventListener('input', function() {
+                    // Opcional: actualizar el <title> si el usuario edita el título visible
+                    // document.title = pageTitle.textContent + " | Tu mejor opción de para snacks";
+                });
+            }
+        });
     </script>
 </body>
-
 
 </html>
