@@ -9,9 +9,9 @@
     <style>
         :root {
             --accent: #d2e620;
-            /* Amarillo/Verde brillante */
+            /* Amarillo/Verde brillante (Mario/Marvel) */
             --accent-2: #2ea0ff;
-            /* Azul vibrante */
+            /* Azul vibrante (Marvel/Mario) */
             --bg: #0f1724;
             /* Fondo base oscuro */
             --card: #0b1220;
@@ -33,7 +33,7 @@
             font-family: 'Inter', sans-serif, system-ui;
             /* Fuente moderna */
             background: linear-gradient(180deg, #1d13a8 0%, #d138386e 75%);
-            /* Fondo degradado llamativo (Azul-Rojo) */
+            /* Fondo degradado llamativo (Azul - Rojo para Marvel/Mario) */
             color: #ffffff;
             margin: 0;
             min-height: 100vh;
@@ -200,24 +200,18 @@
             gap: 20px;
         }
 
-        /* Propuestas/Temáticas */
+        /* Propuestas/Temáticas (Modificada) */
         .proposals {
             padding: 24px;
+            text-align: center;
         }
 
-        .proposal {
-            background: linear-gradient(90deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
-            padding: 15px;
+        .proposals .not-available {
+            padding: 20px;
             border-radius: 10px;
-            margin-bottom: 8px;
-            border-left: 3px solid var(--accent-2);
-        }
-
-        .proposal strong {
-            display: block;
-            color: var(--accent-2);
-            font-weight: 700;
-            margin-bottom: 4px;
+            background: rgba(255, 255, 255, 0.05);
+            margin-top: 15px;
+            border: 1px dashed rgba(255, 255, 255, 0.1);
         }
 
         /* Mapa */
@@ -262,7 +256,7 @@
         }
 
         .socials a:hover {
-            background: var(--accent-2);
+            background: var(--accent);
             color: var(--bg);
             /* Color de fondo oscuro para el hover */
         }
@@ -304,7 +298,7 @@
                 <img id="topLogo" src="logo.png" alt="Logo de Snacks & Winners">
                 <div>
                     <div class="title" contenteditable="true" id="pageTitle">Snacks & Winners</div>
-                    <div class="subtitle">Los mejores en contenido De Marvel-Mario y tu Área de descanso</div>
+                    <div class="subtitle">La convergencia de Super Mario, Marvel y tu Área de descanso</div>
                 </div>
             </div>
         </header>
@@ -318,16 +312,16 @@
                 </div>
 
                 <div class="intro-text">
-                    <h1>¡Próximamente! 🚀</h1>
+                    <h1>¡Próximamente! 🌟 Tu Misión Comienza Aquí</h1>
                     <p>
-                        Somos un emprendimiento innovador que combina **diversión y sabor** en un solo lugar. Ofrecemos una experiencia única donde puedes disfrutar deliciosos snacks, jugar en una **máquina de garra**, y refrescarte con **helados irresistibles**, todo dentro de una increíble temática inspirada en los universos de **Super Mario y Marvel**.
+                        Somos un emprendimiento innovador que combina **diversión y sabor** en un solo lugar. Ofrecemos una experiencia única donde puedes disfrutar deliciosos snacks, jugar en una **máquina de garra**, y refrescarte con **helados irresistibles**, todo dentro de una increíble temática inspirada en los épicos universos de **Super Mario y Marvel**.
                     </p>
                 </div>
 
                 <div class="vision-mission">
                     <div>
-                        <h2>📍 ¡Atención! Mira nuestras publicaciones</h2>
-                        <p>Síguenos en nuestras redes sociales para ser el primero en saber nuestra fecha de apertura y los emocionantes concursos y premios que tendremos.</p>
+                        <h2>🎮 Nivel de Alerta: Apertura</h2>
+                        <p>Síguenos en nuestras redes sociales para ser el primero en saber nuestra fecha de apertura y los emocionantes concursos y premios que tendremos, ¡dignos de un héroe o un fontanero!</p>
                     </div>
 
                     <div class="props">
@@ -342,24 +336,9 @@
                     <h2>Nuestra Comunidad (Temáticas)</h2>
                     <p style="margin-bottom: 12px; font-size: 14px;">Conoce los proyectos que nos inspiran y forman parte de nuestra visión.</p>
 
-                    <div class="proposal">
-                        <strong>MundoGarra</strong>
-                        <p style="color: var(--muted); font-size: 13px;">La emoción de la máquina de garra y sus premios.</p>
-                    </div>
-
-                    <div class="proposal">
-                        <strong>Mariolovers</strong>
-                        <p style="color: var(--muted); font-size: 13px;">El rincón perfecto para los fans del Reino Champiñón.</p>
-                    </div>
-
-                    <div class="proposal">
-                        <strong>Pixel & Mask</strong>
-                        <p style="color: var(--muted); font-size: 13px;">Combinando lo retro con el universo de superhéroes.</p>
-                    </div>
-
-                    <div class="proposal">
-                        <strong>ArcadeLoot</strong>
-                        <p style="color: var(--muted); font-size: 13px;">Gana recompensas coleccionables y disfruta de snacks.</p>
+                    <div class="not-available">
+                        <p style="color: var(--accent); font-size: 1.1rem; font-weight: 800; margin-bottom: 5px;">¡Información No Disponible en este momento!</p>
+                        <p style="color: var(--muted); font-size: 0.9rem;">Pronto revelaremos más detalles sobre la expansión de nuestras emocionantes temáticas.</p>
                     </div>
                 </section>
 
@@ -397,15 +376,6 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Actualiza el año en el footer
             document.getElementById('yyyy').textContent = new Date().getFullYear();
-
-            // Script para permitir la edición de títulos si se desea
-            const pageTitle = document.getElementById('pageTitle');
-            if (pageTitle) {
-                pageTitle.addEventListener('input', function() {
-                    // Opcional: actualizar el <title> si el usuario edita el título visible
-                    // document.title = pageTitle.textContent + " | Tu mejor opción de para snacks";
-                });
-            }
         });
     </script>
 </body>
