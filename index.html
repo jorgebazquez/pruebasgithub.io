@@ -1,383 +1,249 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Snacks & Winners | Tu mejor opción de para snacks</title>
-    <meta name="description" content="Somos un emprendimiento innovador que combina diversión y sabor en un solo lugar. Ofrecemos una experiencia única donde puedes disfrutar deliciosos snacks, jugar en una máquina de garra, y refrescarte con helados irresistibles, todo dentro de una increíble temática inspirada en los universos de Super Mario y Marvel." />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jorge y Joss</title>
     <style>
-        :root {
-            --accent: #d2e620;
-            /* Amarillo/Verde brillante (Mario/Marvel) */
-            --accent-2: #2ea0ff;
-            /* Azul vibrante (Marvel/Mario) */
-            --bg: #0f1724;
-            /* Fondo base oscuro */
-            --card: #0b1220;
-            /* Fondo de tarjeta más oscuro */
-            --glass: rgba(255, 255, 255, 0.05);
-            /* Efecto cristal ligero */
-            --muted: #98a0b3;
-            /* Color de texto secundario */
-            --text-light: #cfe6ff;
-            /* Color de texto principal claro */
-        }
-
-        /* Reset Básico y Tipografía */
-        * {
-            box-sizing: border-box
-        }
-
         body {
-            font-family: 'Inter', sans-serif, system-ui;
-            /* Fuente moderna */
-            background: linear-gradient(180deg, #1d13a8 0%, #d138386e 75%);
-            /* Fondo degradado llamativo (Azul - Rojo para Marvel/Mario) */
-            color: #ffffff;
             margin: 0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .container {
-            max-width: 1200px;
-            /* Ancho ligeramente mayor */
-            margin: 36px auto;
-            padding: 28px;
-            flex-grow: 1;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5 {
-            color: #ffffff;
-            /* Asegurar que los títulos sean blancos */
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            margin: 0 0 12px 0;
-            font-weight: 900;
-            /* Extra negrita */
-        }
-
-        h2 {
-            font-size: 1.5rem;
-            margin: 0 0 10px 0;
-            font-weight: 700;
-        }
-
-        p {
-            margin: 0;
-            color: var(--text-light);
-            line-height: 1.6;
-        }
-
-        /* Header */
-        header {
-            display: flex;
-            align-items: center;
-            gap: 18px
-        }
-
-        .brand-top {
-            display: flex;
-            align-items: center;
-            gap: 14px
-        }
-
-        .brand-top img {
-            width: 72px;
-            /* Logo ligeramente más grande */
-            height: 72px;
-            object-fit: contain;
-            border-radius: 12px;
-            background: var(--glass);
-            padding: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .title {
-            font-size: 24px;
-            /* Título más grande */
-            font-weight: 800;
-            line-height: 1.2;
-            color: var(--accent);
-            /* Destacar con el color de acento */
-        }
-
-        .subtitle {
-            font-size: 14px;
-            color: var(--muted);
-            margin-top: 4px;
-        }
-
-        /* Hero / Main Layout */
-        .hero {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            /* Diseño 2/3 y 1/3 para escritorio */
-            gap: 36px;
-            margin-top: 36px;
-            align-items: flex-start;
-        }
-
-        /* Card Base Style */
-        .card {
-            background: linear-gradient(180deg, var(--glass), rgba(255, 255, 255, 0.02));
-            padding: 30px;
-            border-radius: 18px;
-            /* Bordes más suaves */
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            /* Borde sutil */
-        }
-
-        /* Sección de Logo Grande */
-        .big-logo-container {
-            margin-bottom: 24px;
-        }
-
-        .big-logo {
+            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 24px;
-            border-radius: 16px;
-            background: var(--card);
-            /* Fondo de logo más oscuro */
-            height: 380px;
-            /* Altura ajustada */
-            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.4);
+            height: 100vh;
+            background-color: #fff5f7;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            transition: background-color 1s ease;
         }
-
-        .big-logo img {
-            max-width: 80%;
-            max-height: 100%;
-            object-fit: contain
+        /* Flores en las esquinas */
+        
+        .corner-flower {
+            position: absolute;
+            width: 180px;
+            opacity: 0.9;
+            z-index: 10;
+            pointer-events: none;
         }
-
-        /* Visión y Misión */
-        .vision-mission {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-            margin-top: 24px;
+        
+        .top-left {
+            top: -30px;
+            left: -30px;
         }
-
-        .intro-text {
-            border-left: 4px solid var(--accent);
-            padding-left: 15px;
+        
+        .top-right {
+            top: -30px;
+            right: -30px;
+            transform: scaleX(-1);
         }
-
-        .props {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 15px
+        
+        .bottom-left {
+            bottom: -30px;
+            left: -30px;
+            transform: scaleY(-1);
         }
-
-        .badge {
-            display: inline-block;
-            padding: 8px 14px;
-            border-radius: 999px;
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--muted);
-            font-size: 13px;
-            font-weight: 500;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        
+        .bottom-right {
+            bottom: -30px;
+            right: -30px;
+            transform: rotate(180deg);
         }
-
-        /* Aside (Right Column) */
-        .right {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        /* Propuestas/Temáticas (Modificada) */
-        .proposals {
-            padding: 24px;
+        /* Tarjeta Principal */
+        
+        .card {
             text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            z-index: 5;
+            border: 2px solid #ffb7c5;
+            max-width: 400px;
+            transition: opacity 0.8s ease;
         }
-
-        .proposals .not-available {
-            padding: 20px;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.05);
-            margin-top: 15px;
-            border: 1px dashed rgba(255, 255, 255, 0.1);
+        
+        h1 {
+            color: #d63384;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
         }
-
-        /* Mapa */
-        .map-section h5 {
-            margin: 0 0 10px 0;
-            font-size: 1rem;
-            color: #ffffff;
-            text-transform: uppercase;
+        
+        p {
+            color: #555;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
         }
-
-        .map-section iframe {
+        
+        .main-image {
             width: 100%;
-            /* Ocupar todo el ancho disponible */
-            height: 300px;
-            border-radius: 10px;
-            filter: grayscale(80%) brightness(120%);
-            /* Estilo oscuro para el mapa */
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border: 5px solid #fff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
-
-        /* Redes Sociales */
-        .socials-card {
-            padding: 24px;
+        
+        .btn-start,
+        .btn-choice {
+            background-color: #ff6b81;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin: 10px;
         }
-
-        .socials {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
+        
+        .btn-no {
+            background-color: #a1a1a1;
+            position: relative;
         }
-
-        .socials a {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 16px;
-            border-radius: 10px;
-            text-decoration: none;
-            color: #ffffff;
-            background: var(--glass);
-            font-weight: 600;
-            transition: background 0.3s, color 0.3s;
-        }
-
-        .socials a:hover {
-            background: var(--accent);
-            color: var(--bg);
-            /* Color de fondo oscuro para el hover */
-        }
-
-        /* Footer */
-        footer {
-            margin-top: 40px;
-            padding: 20px;
+        /* Estilos del Libro / Historia */
+        
+        #book-page {
+            display: none;
+            position: fixed;
+            width: 85%;
+            max-width: 600px;
+            min-height: 400px;
+            background: #fdfaf1;
+            border: 1px solid #e0d5b1;
+            box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.2);
+            padding: 40px;
             text-align: center;
-            color: var(--muted);
-            font-size: 14px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 5px 20px 20px 5px;
+            background-image: linear-gradient(90deg, rgba(200, 0, 0, 0.1) 1px, transparent 1px), linear-gradient(#d1e5f0 1px, transparent 1px);
+            background-size: 40px 40px;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 20;
+            animation: openBook 1.2s forwards;
         }
-
-        /* Media Queries (Responsive Design) */
-        @media (max-width: 960px) {
-            .hero {
-                grid-template-columns: 1fr;
-                /* Una columna en móviles/tabletas */
-                gap: 28px;
+        
+        .story-text {
+            font-family: 'Georgia', serif;
+            color: #4a4a4a;
+            font-style: italic;
+            line-height: 1.8;
+            font-size: 1.8rem;
+        }
+        /* Pantalla Final Libreta */
+        
+        #final-page {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 90%;
+            max-width: 500px;
+            height: 600px;
+            background: white;
+            background-image: repeating-linear-gradient(white 0px, white 24px, #7ec4e0 25px);
+            padding: 50px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+            border-left: 40px solid #f1f1f1;
+            position: relative;
+            z-index: 30;
+        }
+        
+        #final-page::before {
+            content: '';
+            position: absolute;
+            left: -25px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            border-left: 2px dotted #ff6b81;
+        }
+        
+        .handwritten {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 2.5rem;
+            color: #2c3e50;
+            text-align: center;
+        }
+        
+        @keyframes openBook {
+            from {
+                transform: perspective(1000px) rotateY(-90deg);
+                opacity: 0;
             }
-
-            .big-logo {
-                height: 300px;
-            }
-
-            .container {
-                padding: 15px;
-                margin: 20px auto;
+            to {
+                transform: perspective(1000px) rotateY(0deg);
+                opacity: 1;
             }
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <header>
-            <div class="brand-top">
-                <img id="topLogo" src="logo.png" alt="Logo de Snacks & Winners">
-                <div>
-                    <div class="title" contenteditable="true" id="pageTitle">Snacks & Winners</div>
-                    <div class="subtitle">La convergencia de Super Mario, Marvel y tu Área de descanso</div>
-                </div>
-            </div>
-        </header>
 
-        <main class="hero">
-            <section class="card">
-                <div class="big-logo-container">
-                    <div class="big-logo" id="bigLogoBox">
-                        <img id="bigLogo" src="logo.png" alt="Gran logo de Snacks & Winners">
-                    </div>
-                </div>
+    <img src="https://cdn-icons-png.flaticon.com/512/346/346167.png" class="corner-flower top-left">
+    <img src="https://cdn-icons-png.flaticon.com/512/346/346167.png" class="corner-flower top-right">
+    <img src="https://cdn-icons-png.flaticon.com/512/346/346167.png" class="corner-flower bottom-left">
+    <img src="https://cdn-icons-png.flaticon.com/512/346/346167.png" class="corner-flower bottom-right">
 
-                <div class="intro-text">
-                    <h1>¡Próximamente! 🌟 Tu Misión Comienza Aquí</h1>
-                    <p>
-                        Somos un emprendimiento innovador que combina **diversión y sabor** en un solo lugar. Ofrecemos una experiencia única donde puedes disfrutar deliciosos snacks, jugar en una **máquina de garra**, y refrescarte con **helados irresistibles**, todo dentro de una increíble temática inspirada en los épicos universos de **Super Mario y Marvel**.
-                    </p>
-                </div>
+    <div class="card" id="main-card">
+        <h1>Hola Joss bebe</h1>
+        <img src="imagen.jpg" onerror="this.src='https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=500'" alt="Nuestra Foto" class="main-image">
+        <p>Eres lo mejor que me pasó en la vida</p>
+        <button class="btn-start" onclick="iniciarHistoria()">Comenzar</button>
+    </div>
 
-                <div class="vision-mission">
-                    <div>
-                        <h2>🎮 Nivel de Alerta: Apertura</h2>
-                        <p>Síguenos en nuestras redes sociales para ser el primero en saber nuestra fecha de apertura y los emocionantes concursos y premios que tendremos, ¡dignos de un héroe o un fontanero!</p>
-                    </div>
+    <div id="book-page">
+        <div class="story-text">
+            "Aquí comienza nuestra historia... <br> ¿Aceptas escribirla junto a mí?"
+        </div>
+        <div style="margin-top: 30px;">
+            <button class="btn-choice" onclick="mostrarFinal()">SÍ</button>
+            <button class="btn-choice btn-no" id="btn-no" onmouseover="moverBoton()">NO</button>
+        </div>
+    </div>
 
-                    <div class="props">
-                        <span class="badge">Inicia con: Máquina de helados · Máquina de café · Ventas de Lego · Máquina de garra</span>
-                        <span class="badge">Orientado a: fans de Marvel y Mario · Familias · Coleccionistas</span>
-                    </div>
-                </div>
-            </section>
-
-            <aside class="right">
-                <section class="card proposals">
-                    <h2>Nuestra Comunidad (Temáticas)</h2>
-                    <p style="margin-bottom: 12px; font-size: 14px;">Conoce los proyectos que nos inspiran y forman parte de nuestra visión.</p>
-
-                    <div class="not-available">
-                        <p style="color: var(--accent); font-size: 1.1rem; font-weight: 800; margin-bottom: 5px;">¡Información No Disponible en este momento!</p>
-                        <p style="color: var(--muted); font-size: 0.9rem;">Pronto revelaremos más detalles sobre la expansión de nuestras emocionantes temáticas.</p>
-                    </div>
-                </section>
-
-                <section class="card map-section">
-                    <h5>Visítanos</h5>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.771900125433!2d-3.703790284594239!3d40.41677547936551!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd422998a1c97a9f%3A0xc6c4f39e33b6b1b!2sPuerta%20del%20Sol!5e0!3m2!1ses!2smx!4v1700000000000!5m2!1ses!2smx" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </section>
-
-                <section class="card socials-card">
-                    <h2>Comunicación & Redes</h2>
-                    <div class="socials">
-                        <a href="https://www.facebook.com/profile.php?id=61581916636500">
-                            Facebook
-                        </a>
-                        <a href="">
-                            X (Twitter)
-                        </a>
-                        <a href="https://www.instagram.com/snacksandwinners?igsh=MTA2bHp1bDU4ejh4">
-                            Instagram
-                        </a>
-                        <a href="https://www.tiktok.com/@snacks.winners?_t=ZS-90bW0qyU03B&_r=1">
-                            TikTok
-                        </a>
-                    </div>
-                </section>
-            </aside>
-        </main>
-
-        <footer>
-            <div>© <span id="yyyy"></span> Snacks & Winners • Diseño de landing temático</div>
-        </footer>
+    <div id="final-page">
+        <div class="handwritten">
+            Será un gusto escribir mi historia contigo ❤️
+        </div>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Actualiza el año en el footer
-            document.getElementById('yyyy').textContent = new Date().getFullYear();
-        });
+        function iniciarHistoria() {
+            const card = document.getElementById('main-card');
+            card.style.opacity = '0';
+            setTimeout(() => {
+                card.style.display = 'none';
+                const book = document.getElementById('book-page');
+                book.style.display = 'flex';
+                document.body.style.backgroundColor = "#e8d8c3";
+            }, 800);
+        }
+
+        function mostrarFinal() {
+            const book = document.getElementById('book-page');
+            book.style.display = 'none';
+            const final = document.getElementById('final-page');
+            final.style.display = 'flex';
+            document.body.style.backgroundColor = "#d1e5f0";
+        }
+
+        function moverBoton() {
+            const btnNo = document.getElementById('btn-no');
+            const x = Math.random() * (window.innerWidth - btnNo.offsetWidth);
+            const y = Math.random() * (window.innerHeight - btnNo.offsetHeight);
+            btnNo.style.position = "absolute";
+            btnNo.style.left = x + "px";
+            btnNo.style.top = y + "px";
+        }
     </script>
+
 </body>
 
 </html>
