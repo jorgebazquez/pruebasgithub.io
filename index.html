@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jorge y Alin</title>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <style>
         body {
             margin: 0;
@@ -12,10 +13,10 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             background-color: #fff5f7;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            overflow: hidden;
+            overflow-x: hidden;
             transition: background-color 1s ease;
         }
         /* Flores en las esquinas */
@@ -85,9 +86,11 @@
             border: 5px solid #fff;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
+        /* Botones */
         
         .btn-start,
-        .btn-choice {
+        .btn-choice,
+        .btn-collage {
             background-color: #ff6b81;
             color: white;
             padding: 15px 40px;
@@ -99,13 +102,21 @@
             text-transform: uppercase;
             font-weight: bold;
             margin: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-start:hover,
+        .btn-choice:hover,
+        .btn-collage:hover {
+            transform: scale(1.05);
+            background-color: #ff4757;
         }
         
         .btn-no {
             background-color: #a1a1a1;
             position: relative;
         }
-        /* Estilos del Libro / Historia */
+        /* Secciones del Libro */
         
         #book-page {
             display: none;
@@ -135,7 +146,6 @@
             line-height: 1.8;
             font-size: 1.8rem;
         }
-        /* Pantalla Final Libreta */
         
         #final-page {
             display: none;
@@ -144,7 +154,7 @@
             justify-content: center;
             width: 90%;
             max-width: 500px;
-            height: 600px;
+            min-height: 500px;
             background: white;
             background-image: repeating-linear-gradient(white 0px, white 24px, #7ec4e0 25px);
             padding: 50px;
@@ -169,6 +179,87 @@
             font-size: 2.5rem;
             color: #2c3e50;
             text-align: center;
+            margin-bottom: 30px;
+        }
+        /* --- ESTILOS DEL COLLAGE DE CORAZÓN --- */
+        
+        #collage-section {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 40;
+            width: 100%;
+            padding: 20px;
+        }
+        
+        .heart-container {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            width: 350px;
+            padding: 20px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.3);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+        
+        .heart-container:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 30px rgba(255, 105, 180, 0.6);
+        }
+        
+        .heart-container::after {
+            content: '📸 Click para guardar nuestro corazón';
+            position: absolute;
+            bottom: -40px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 1rem;
+            color: #d63384;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+        
+        .heart-container:hover::after {
+            opacity: 1;
+        }
+        
+        .photo-slot {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            border-radius: 4px;
+            overflow: hidden;
+            background-color: #f0f0f0;
+        }
+        
+        .photo-slot img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .photo-slot:hover img {
+            transform: scale(1.2);
+        }
+        
+        .empty {
+            visibility: hidden;
+        }
+        
+        .download-msg {
+            margin-top: 20px;
+            font-family: 'Segoe UI', sans-serif;
+            color: #d63384;
+            font-weight: bold;
+            display: none;
         }
         
         @keyframes openBook {
@@ -210,11 +301,21 @@
 
     <div id="final-page">
         <div class="handwritten">
-            Será un gusto escribir mi historia contigo ❤️ 🥰Jorge Y Ali🥰
+            Será un gusto escribir mi historia contigo ❤️ <br>🥰 Jorge Y Ali 🥰
         </div>
+        <button class="btn-collage" onclick="mostrarCollage()">Ver Nuestra Galería 💖</button>
+    </div>
+
+    <div id="collage-section">
+        <h2 style="color:#d63384; font-family:'Brush Script MT', cursive; font-size:3rem; margin-bottom:10px; text-align:center;">Nuestros Momentos</h2>
+        <div class="heart-container" id="heart-grid" onclick="descargarCorazon()">
+        </div>
+        <div class="download-msg" id="download-msg">¡Descargando nuestro recuerdo! ❤️</div>
     </div>
 
     <script>
+        // --- Lógica del Flujo Principal ---
+
         function iniciarHistoria() {
             const card = document.getElementById('main-card');
             card.style.opacity = '0';
@@ -241,6 +342,94 @@
             btnNo.style.position = "absolute";
             btnNo.style.left = x + "px";
             btnNo.style.top = y + "px";
+        }
+
+        // --- Lógica del Collage Corazón ---
+
+        function mostrarCollage() {
+            document.getElementById('final-page').style.display = 'none';
+            document.getElementById('collage-section').style.display = 'flex';
+            document.body.style.backgroundColor = "#ffe6ea"; // Fondo rosa romántico
+            generarCorazon();
+        }
+
+        function generarCorazon() {
+            const container = document.getElementById('heart-grid');
+            container.innerHTML = ''; // Limpiar contenido previo
+
+            // Mapa del corazón (1 = foto, 0 = espacio vacío)
+            const map = [
+                0, 1, 1, 0, 1, 1, 0, // Fila 1
+                1, 1, 1, 1, 1, 1, 1, // Fila 2
+                1, 1, 1, 1, 1, 1, 1, // Fila 3
+                0, 1, 1, 1, 1, 1, 0, // Fila 4
+                0, 0, 1, 1, 1, 0, 0, // Fila 5
+                0, 0, 0, 1, 0, 0, 0 // Fila 6
+            ];
+
+            // Lista EXACTA de tus fotos basada en la imagen que proporcionaste
+            const misFotos = [
+                "5d.jpeg",
+                "cfcrrsz.jpeg",
+                "crtcx.jpeg",
+                "derdee.jpeg",
+                "dex.jpeg",
+                "e.jpeg",
+                "ed.jpeg",
+                "edxe.jpeg",
+                "fr.jpeg",
+                "sxe.jpeg",
+                "WhatsApp Image 2026-01-07 at 15.37.55.jpeg", // Asegúrate que este nombre sea correcto
+                "xs.jpeg",
+                "imagen.jpeg"
+            ];
+
+            let photoCount = 0;
+
+            map.forEach(val => {
+                const div = document.createElement('div');
+                div.className = val === 1 ? 'photo-slot' : 'photo-slot empty';
+
+                if (val === 1) {
+                    const img = document.createElement('img');
+                    // Usa el operador módulo (%) para repetir las fotos si se acaban
+                    const fotoIndex = photoCount % misFotos.length;
+                    img.src = `imagenes mi vida/${misFotos[fotoIndex]}`;
+
+                    // Imagen de respaldo por si alguna ruta falla
+                    img.onerror = function() {
+                        this.src = 'https://images.unsplash.com/photo-1516961642265-531546e84af2?q=80&w=200';
+                    };
+
+                    img.alt = "Momento J&A";
+                    div.appendChild(img);
+                    photoCount++;
+                }
+                container.appendChild(div);
+            });
+        }
+
+        function descargarCorazon() {
+            const element = document.getElementById('heart-grid');
+            const msg = document.getElementById('download-msg');
+
+            msg.style.display = 'block';
+
+            // Usa la librería html2canvas para convertir el div en una imagen
+            html2canvas(element, {
+                backgroundColor: null, // Fondo transparente
+                scale: 2, // Mayor calidad
+                useCORS: true // Permite imágenes externas si es necesario
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = 'nuestro_corazon_jorge_y_ali.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+                setTimeout(() => msg.style.display = 'none', 3000);
+            }).catch(err => {
+                console.error("Error al generar la imagen:", err);
+                msg.textContent = "Hubo un error al guardar la imagen :(";
+            });
         }
     </script>
 
